@@ -3,16 +3,13 @@ from django.db import models
 from django.utils import timezone
 
 
-class Post(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
+class Pontos(models.Model):
+    id_ponto = models.IntegerField(primary_key=True, default= 000)
+    nome_ponto = models.CharField(max_length= 250)
+    preco = models.IntegerField(default= 0)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
 
     def __str__(self):
-        return self.title
+        return self.nome_ponto
+    

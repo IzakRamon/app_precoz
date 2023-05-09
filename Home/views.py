@@ -1,4 +1,7 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+from .models import Pontos
+import folium 
 
 def home(request):
-    return HttpResponse("Hello, Django!")
+    return render(request, 'home/exemplo.html', {})
+
