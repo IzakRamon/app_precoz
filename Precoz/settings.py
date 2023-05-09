@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Precoz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(os.path.dirname(__file__) ,'home/templates').replace('\\','/')],[os.path.join(BASE_DIR, "home"),],
+        'DIRS': [os.path.join(os.path.dirname(__file__) ,'templates').replace('\\','/')],[os.path.join(BASE_DIR, "home"),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
