@@ -1,7 +1,20 @@
-{% extends "templates\exemplo.html" %}
-{% block image %}
-<div class="container mt-4">  
-    <h1 class="text-center">Cadastre</h1>  
+<div class ="container">
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+        {% for ponto in point %}
+        <tr>
+            <td>{{ponto.id_ponto}}</td>
+            <td>{{ponto.Nome}}</td>
+            <td>{{ponto.preco}}</td>
+            <td>{{ponto.latitude}}</td>
+            <td>{{ponto.longitude}}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
-
-{% endblock image %}

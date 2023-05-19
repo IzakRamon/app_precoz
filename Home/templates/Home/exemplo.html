@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,15 +145,8 @@
   <header class="site-header sticky-top py-1">
     <nav class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="navbar-brand" href="#">
-        <svg height="44" viewBox="0 0 14 44" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m13.0729 17.6825a3.61 3.61 0 0 0 -1.7248 3.0365 3.5132 3.5132 0 0 0 2.1379 3.2223 8.394 8.394 0 0 1 -1.0948 2.2618c-.6816.9812-1.3943 1.9623-2.4787 1.9623s-1.3633-.63-2.613-.63c-1.2187 0-1.6525.6507-2.644.6507s-1.6834-.9089-2.4787-2.0243a9.7842 9.7842 0 0 1 -1.6628-5.2776c0-3.0984 2.014-4.7405 3.9969-4.7405 1.0535 0 1.9314.6919 2.5924.6919.63 0 1.6112-.7333 2.8092-.7333a3.7579 3.7579 0 0 1 3.1604 1.5802zm-3.7284-2.8918a3.5615 3.5615 0 0 0 .8469-2.22 1.5353 1.5353 0 0 0 -.031-.32 3.5686 3.5686 0 0 0 -2.3445 1.2084 3.4629 3.4629 0 0 0 -.8779 2.1585 1.419 1.419 0 0 0 .031.2892 1.19 1.19 0 0 0 .2169.0207 3.0935 3.0935 0 0 0 2.1586-1.1368z"/></svg>
+        <img src="https://png.pngtree.com/png-vector/20220917/ourmid/pngtree-letter-p-icon-png-image_6187497.png" width="30" height="30" alt="">
       </a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Product</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Support</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
-      <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
     </nav>
   </header>
   
@@ -192,10 +186,7 @@
         };
         
         //Add a marker to show where you clicked.
-        theMarker = L.marker([lat,lon]).addTo(map).bindPopup('<h1 class="text-center">Cadastre</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul>'
-        +'<form><div class="form-group"><label for="exampleInputEmail1">Nome do produto</label><input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Produto"></div><div class="form-group"><label for="exampleInputPassword1">Preço</label><input type="Preço" class="form-control" id="exampleInputPassword1" placeholder="PReço"></div></form>'+'<br>'+'<span class="badge bg-primary">Latitude:'+lat+' </span>'+'<br>'+'<span class="badge bg-primary">Latitude:'+lon+' </span>'
-        +'<br>'+'<div class="col-md-12 text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Salvar</button></div>').openPopup();
-        });
+        theMarker = L.marker([lat,lon], {icon: redMarker}).addTo(map).bindPopup('<h1 class="text-center">Cadastre</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul>'+'<form action="{% url "listar_pontos" %}" method="POST">{% csrf_token %}<form><div class="form-group"><div class="form-group"><label for="exampleInputEmail1">Nome do produto </label><input name="Nome" class="form-control" aria-describedby="emailHelp" placeholder="Produto"><small id="emailHelp" class="form-text text-muted"></small></div><div class="input-group mb-3"><span class="input-group-text">$</span><input name="preco" type="text" class="form-control" aria-label="Amount (to the nearest dollar)"><span class="input-group-text">.00</span></div><button type="submit" class="btn btn-primary">Enviar</button></div></form>'+'<br>'+'<span name = "latitude"class="badge bg-primary">Latitude:'+lat+' </span>'+'<br>'+'<span name = "lontitude" class="badge bg-primary">Longitude:'+lon+' </span>'+'<br>'+'<br>').openPopup();  });
 
 
         var redMarker = L.icon({
@@ -209,9 +200,95 @@
           markerColor: 'red',
           iconSize: [43,42],
         });
+
+        var zombie = L.icon({
+          iconUrl: 'https://www.waze.com/livemap/assets/zombie-97d0fa2470dcf1670f9fe2a71094e1bf.png',
+          markerColor: 'red',
+          iconSize: [43,42],
+        });
+
+        var buraco = L.icon({
+          iconUrl: 'https://www.waze.com/livemap/assets/pothole-0fa609872c2dde3bc42d57ba24dc5e8f.svg',
+          markerColor: 'red',
+          iconSize: [43,42],
+        });
+
+        var police = L.icon({
+          iconUrl: 'https://www.waze.com/livemap/assets/police-987e7deeb8893a0e088fbf5aac5082f7.svg',
+          markerColor: 'red',
+          iconSize: [43,42],
+        });
+
+        var paz = L.icon({
+          iconUrl: 'https://www.waze.com/livemap/assets/peaceful-63d7cefb00556a762b013aa627403690.png',
+          markerColor: 'red',
+          iconSize: [43,42],
+        });
+
+        var ninja = L.icon({
+          iconUrl: 'https://www.waze.com/livemap/assets/ninja-f74dc30ac09a5c473438351b2fdd0541.png',
+          markerColor: 'red',
+          iconSize: [43,42],
+        });
+
+        var placa = L.icon({
+          iconUrl: 'https://www.waze.com/livemap/assets/missing-sign-14f7444eb35bfe7e056db4b97c5c99c0.svg',
+          markerColor: 'red',
+          iconSize: [43,42],
+        });
+
+        var amor = L.icon({
+          iconUrl: 'https://www.waze.com/livemap/assets/inlove-d4028049090a429d0e9916c73dfb7d9a.png',
+          markerColor: 'red',
+          iconSize: [43,42],
+        });
+
+        var perigo = L.icon({
+          iconUrl: 'https://www.waze.com/livemap/assets/hazard-02e4ae89da4f6b5a88a7bc5e4725f2e5.svg',
+          markerColor: 'red',
+          iconSize: [43,42],
+        });
+
+        var feliz = L.icon({
+          iconUrl: 'https://www.waze.com/livemap/assets/happy-263ad4374b38155913ee917e24487a7f.png',
+          markerColor: 'red',
+          iconSize: [43,42],
+        });
+
+        var construcao = L.icon({
+          iconUrl: 'https://www.waze.com/livemap/assets/construction-339967a280127f90642cce833b837eff.svg',
+          markerColor: 'red',
+          iconSize: [43,42],
+        });
+
+        var buraco = L.icon({
+          iconUrl: 'https://www.waze.com/livemap/assets/pothole-0fa609872c2dde3bc42d57ba24dc5e8f.svg',
+          markerColor: 'red',
+          iconSize: [43,42],
+        });
+
+        var bebe = L.icon({
+          iconUrl: 'https://www.waze.com/livemap/assets/baby-614b7e973bbdf13b15ba20342f3dd7f9.png',
+          markerColor: 'red',
+          iconSize: [43,42],
+        });
       
-        L.marker([-23.533241889458406, -46.771500260322846], {icon: redMarker}).addTo(map).bindPopup('<div class="overflow-auto"><h1 class="text-center">Cadastre</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul>'+'<h1 class="text-center">Cadastre</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul>'+'<h1 class="text-center">Cadastre</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul> width="560" height="315"'+'</div>',{maxHeight: 300}).openPopup();
-        L.marker([-23.531926615852537, -46.80448382523787], {icon: blueMarker}).addTo(map).bindPopup('<div class="overflow-auto"><h1 class="text-center">Cadastre</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul>'+'<h1 class="text-center">Cadastre</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul>'+'<h1 class="text-center">Cadastre</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul> width="560" height="315"'+'</div>',{maxHeight: 300}).openPopup();
+        L.marker([-23.533241889458406, -46.771500260322846], {icon: feliz}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><img src="https://cdn.cookielaw.org/logos/3500e69c-30e1-4617-a007-80923b3f3248/0c9c3d69-5aa2-4c20-a7dc-4b585af67ba8/de71a48d-57c7-4493-8a9a-816514583f6c/2048px-Sams_Club.svg.png" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>Promoções</strong></h5><p class="text-muted"><span class="badge bg-primary">Mês das Mães</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul>'+'<h1 class="text-center">Cadastre</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul>'+'<h1 class="text-center">Cadastre</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul> width="560" height="315"').openPopup();
+        L.marker([-23.531926615852537, -46.80448382523787], {icon: blueMarker}).addTo(map).bindPopup('<table class="table"><thead><tr><th scope="col">ID</th><th scope="col">Nome</th><th scope="col">Preço</th><th scope="col">Latitude</th></tr></thead><tbody>{% for ponto in point %}<tr><td>{{ponto.id_ponto}}</td><td>{{ponto.Nome}}</td><td>{{ponto.preco}}</td><td>{{ponto.latitude}}</td><td>{{ponto.longitude}}</td></tr>{% endfor %}</tbody></table>').openPopup();
+        L.marker([-23.540325741696634, -46.788251529027654], {icon: bebe}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><img src="https://cdn.cookielaw.org/logos/3500e69c-30e1-4617-a007-80923b3f3248/0c9c3d69-5aa2-4c20-a7dc-4b585af67ba8/de71a48d-57c7-4493-8a9a-816514583f6c/2048px-Sams_Club.svg.png" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>Promoções</strong></h5><p class="text-muted"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+        L.marker([-23.539342140684116, -46.794903407071665], {icon: buraco}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><img src="https://cdn.cookielaw.org/logos/3500e69c-30e1-4617-a007-80923b3f3248/0c9c3d69-5aa2-4c20-a7dc-4b585af67ba8/de71a48d-57c7-4493-8a9a-816514583f6c/2048px-Sams_Club.svg.png" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>Promoções</strong></h5><p class="text-muted"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+        L.marker([-23.56070429962649, -46.78340209469261], {icon: police}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><img src="https://cdn.cookielaw.org/logos/3500e69c-30e1-4617-a007-80923b3f3248/0c9c3d69-5aa2-4c20-a7dc-4b585af67ba8/de71a48d-57c7-4493-8a9a-816514583f6c/2048px-Sams_Club.svg.png" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>Promoções</strong></h5><p class="text-muted"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+        L.marker([-23.575651811421192, -46.80691970411109], {icon: zombie}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+        L.marker([-23.54701403375627, -46.8143011435636], {icon: construcao}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+        L.marker([-23.5570851726036, -46.797821650832404], {icon: perigo}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+        L.marker([-23.550633438029916, -46.75284636908521], {icon: placa}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+        L.marker([-23.525925088264852, -46.78408874072143], {icon: paz}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+        L.marker([-23.54040442951417, -46.80657638184421], {icon: amor}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+        L.marker([-23.558029302232935, -46.805374752165896], {icon: ninja}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+        L.marker([-23.552836504929815, -46.78048385168648], {icon: perigo}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+        L.marker([-23.541033929938717, -46.77155745979042], {icon: perigo}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+        L.marker([-23.54701403375627, -46.8143011435636], {icon: perigo}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
+
 
           // Creates a red marker with the coffee icon
         var aaMarker = L.ExtraMarkers.icon({
@@ -226,6 +303,8 @@
     </script>
     <div class="container mt-4">  
      
+     
+
     </div> 
   </main>
   <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
