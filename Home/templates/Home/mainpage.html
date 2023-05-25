@@ -18,3 +18,28 @@
         {% endfor %}
     </table>
 </div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Preço</th>
+        <th scope="col">Latitude</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for ponto in point %}
+        <tr>
+            <td>{{ponto.id_ponto}}</td>
+            <td>{{ponto.Nome}}</td>
+            <td>{{ponto.preco}}</td>
+            <td>{{ponto.latitude}}</td>
+            <td>{{ponto.longitude}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+
+  return JsonResponse(data,safe = False)
