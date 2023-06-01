@@ -1,45 +1,9 @@
-<div class ="container">
-    <table>
-        <tr>
-            <th>id</th>
-            <th>Nome</th>
-            <th>Preço</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-        </tr>
-        {% for ponto in point %}
-        <tr>
-            <td>{{ponto.id_ponto}}</td>
-            <td>{{ponto.Nome}}</td>
-            <td>{{ponto.preco}}</td>
-            <td>{{ponto.latitude}}</td>
-            <td>{{ponto.longitude}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+<h1>Search Results</h1>
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Preço</th>
-        <th scope="col">Latitude</th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for ponto in point %}
-        <tr>
-            <td>{{ponto.id_ponto}}</td>
-            <td>{{ponto.Nome}}</td>
-            <td>{{ponto.preco}}</td>
-            <td>{{ponto.latitude}}</td>
-            <td>{{ponto.longitude}}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-  </table>
-
-
-  return JsonResponse(data,safe = False)
+<ul>
+  {% for city in object_list %}
+    <li>
+      {{ city.Nome }}, {{ city.preco }}, {{ city.latitude }}, {{ city.longitude }}
+    </li>
+  {% endfor %}
+</ul>

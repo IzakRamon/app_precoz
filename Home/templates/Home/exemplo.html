@@ -152,17 +152,14 @@
   </header>
   
   <main>
-    
-    
-    
     <div class="h-100 d-flex align-items-center justify-content-center">
     <div class="overflow-hidden">
     <div id="map" style="height: 925px; width: 1925px;"/>   
-    {{ data|json_script:"data" }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           0px; border-width: 50px"></div>
+    {{ data|json_script:"data" }} 
+    {{ qs|json_script:"qs" }} 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             0px; border-width: 50px"></div>
     </div>
     </div>
-
-    
     
     <script>
       var map = L.map('map').setView( [-23.5374,-46.7778], 13);
@@ -189,7 +186,7 @@
         };
         
         //Add a marker to show where you clicked.
-        theMarker = L.marker([lat,lon], {icon: redMarker}).addTo(map).bindPopup('<h1 class="text-center">Cadastre</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul>'+'<form action="{% url "listar_pontos" %}" method="POST">{% csrf_token %}<form><div class="form-group"><div class="form-group"><label for="exampleInputEmail1">Nome do produto </label><input name="Nome" class="form-control" aria-describedby="emailHelp" placeholder="Produto"><small id="emailHelp" class="form-text text-muted"></small></div><div class="input-group mb-3"><span class="input-group-text">$</span><input name="preco" type="text" class="form-control" aria-label="Amount (to the nearest dollar)"><span class="input-group-text">.00</span></div><input name="lat" type="hidden" value="'+lat+'"><input name="lon" type="hidden" value="'+lon+'"><button type="submit" class="btn btn-primary">Enviar</button></div></form>'+'<br>'+'<span name = "latitude"class="badge bg-primary">Latitude:'+lat+' </span>'+'<br>'+'<span name = "lontitude" class="badge bg-primary">Longitude:'+lon+' </span>'+'<br>'+'<br>').openPopup();  });
+        theMarker = L.marker([lat,lon], {icon: redMarker}).addTo(map).bindPopup('<h1 class="text-center">Cadastre um produto</h1>'+'<div class="col-md-12 text-center"><div class="text-center"><img src="https://www.apple.com/v/tv-home/i/images/chapternav/light/apple_tv4k_fill_light__b2wtl9srjwb6_large.svg" class="rounded" alt="test"></div><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul>'+'<form action="{% url "listar_pontos" %}" method="POST">{% csrf_token %}<form><div class="form-group"><div class="form-group"><label for="exampleInputEmail1">Nome do produto </label><input name="Nome" class="form-control" aria-describedby="emailHelp" placeholder="Produto"><small id="emailHelp" class="form-text text-muted"></small></div><div class="input-group mb-3"><span class="input-group-text">$</span><input name="preco" type="text" class="form-control" aria-label="Amount (to the nearest dollar)"><span class="input-group-text">.00</span></div><input name="lat" type="hidden" value="'+lat+'"><input name="lon" type="hidden" value="'+lon+'"><div class="col-md-12 text-center"><button type="submit" class="btn btn-primary">Enviar</button></div></div></form>'+'<br>').openPopup();  });
 
 
         var redMarker = L.icon({
@@ -276,40 +273,36 @@
           iconSize: [43,42],
         });
       
-        L.marker([-23.533241889458406, -46.771500260322846], {icon: feliz}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><img src="https://m.media-amazon.com/images/I/61zsoyAdgCL._AC_SX569_.jpg" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul>'+'<h1 class="text-center">Cadastre</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>John Doe</strong></h5><p class="text-muted"><span class="badge bg-primary">Novo</span></p></div><ul class="list-unstyled d-flex justify-content-center text-warning mb-0"><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="fas fa-star fa-sm"></i></li><li><i class="far fa-star fa-sm"></i></li></ul> width="560" height="315"').openPopup();
+        L.marker([-23.533241889458406, -46.771500260322846], {icon: feliz}).addTo(map).bindPopup('<h1 class="text-center">Apple</h1>'+'<div class="col-md-12 text-center"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202303_GEO_BR?wid=200&hei=130&fmt=png-alpha&.v=1677701613581" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>Smart Watch $12,000</strong></h5><p class="text-muted"><span class="badge bg-primary">Black Friday</span></p></div>').openPopup();
         L.marker([-23.531926615852537, -46.80448382523787], {icon: blueMarker}).addTo(map).bindPopup('<table class="table"><thead><tr><th scope="col">ID</th><th scope="col">Nome</th><th scope="col">Preço</th><th scope="col">Latitude</th><th scope="col">Longitude</th></tr></thead><tbody>{% for ponto in point %}<tr><td>{{ponto.id_ponto}}</td><td>{{ponto.Nome}}</td><td>{{ponto.preco}}</td><td>{{ponto.latitude}}</td><td>{{ponto.longitude}}</td></tr>{% endfor %}</tbody></table>').openPopup();
-        L.marker([-23.540325741696634, -46.788251529027654], {icon: bebe}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><img src="https://img.drogaraia.com.br/media/catalog/product/7/8/7891010246204_1.jpeg" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>Promoções</strong></h5><p class="text-muted"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-        L.marker([-23.539342140684116, -46.794903407071665], {icon: buraco}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><img src="https://cdn.cookielaw.org/logos/3500e69c-30e1-4617-a007-80923b3f3248/0c9c3d69-5aa2-4c20-a7dc-4b585af67ba8/de71a48d-57c7-4493-8a9a-816514583f6c/2048px-Sams_Club.svg.png" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>Promoções</strong></h5><p class="text-muted"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-        L.marker([-23.56070429962649, -46.78340209469261], {icon: police}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><img src="https://cdn.cookielaw.org/logos/3500e69c-30e1-4617-a007-80923b3f3248/0c9c3d69-5aa2-4c20-a7dc-4b585af67ba8/de71a48d-57c7-4493-8a9a-816514583f6c/2048px-Sams_Club.svg.png" class="rounded-circle mb-3" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>Promoções</strong></h5><p class="text-muted"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-        L.marker([-23.575651811421192, -46.80691970411109], {icon: zombie}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-        L.marker([-23.54701403375627, -46.8143011435636], {icon: construcao}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-        L.marker([-23.5570851726036, -46.797821650832404], {icon: perigo}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-        L.marker([-23.550633438029916, -46.75284636908521], {icon: placa}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-        L.marker([-23.525925088264852, -46.78408874072143], {icon: paz}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-        L.marker([-23.54040442951417, -46.80657638184421], {icon: amor}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-        L.marker([-23.558029302232935, -46.805374752165896], {icon: ninja}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-        L.marker([-23.552836504929815, -46.78048385168648], {icon: perigo}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-        L.marker([-23.541033929938717, -46.77155745979042], {icon: perigo}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-        L.marker([-23.54701403375627, -46.8143011435636], {icon: perigo}).addTo(map).bindPopup('<h1 class="text-center">Sam Club</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">Mês das Mães</span></p></div>').openPopup();
-
+        L.marker([-23.540325741696634, -46.788251529027654], {icon: bebe}).addTo(map).bindPopup('<h1 class="text-center">Huggies</h1>'+'<div class="col-md-12 text-center"><img src="https://m.media-amazon.com/images/I/51nFRJbIsFL.jpg" class="img-thumbnail" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>Shampoo R$ 12,90</strong></h5><p class="text-muted"><span class="badge bg-primary">Dia das Crianças</span></p></div>').openPopup();
+        L.marker([-23.539342140684116, -46.794903407071665], {icon: buraco}).addTo(map).bindPopup('<h1 class="text-center">Buraco na estrada</h1>').openPopup();
+        L.marker([-23.56070429962649, -46.78340209469261], {icon: police}).addTo(map).bindPopup('<h1 class="text-center">Vigilância</h1>'+'<div class="col-md-12 text-center"><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSRHL9DiAuwKSc5UkujcuOBLcD4Dgi63gbonANayx6ywyGHHfwpjuz6v2zCIM253UlV4s6kpGiATs6lRyHvftfLD15qrdRAibuJUP4r0kgBZ7GmD8max5W2tQ&usqp=CAE" class="img-thumbnail" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>Camera de Segurança R$240,00</strong></h5><p class="text-muted"><span class="badge bg-primary">Segurança</span></p></div>').openPopup();
+        L.marker([-23.5570851726036, -46.797821650832404], {icon: buraco}).addTo(map).bindPopup('<h1 class="text-center">Buraco na estrada</h1>').openPopup();
+        L.marker([-23.525925088264852, -46.78408874072143], {icon: paz}).addTo(map).bindPopup('<h1 class="text-center">Sam"s Club</h1>'+'<div class="col-md-12 text-center"><img src="https://cdn.cookielaw.org/logos/3500e69c-30e1-4617-a007-80923b3f3248/0c9c3d69-5aa2-4c20-a7dc-4b585af67ba8/de71a48d-57c7-4493-8a9a-816514583f6c/2048px-Sams_Club.svg.png" class="img-thumbnail" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>Descontos</strong></h5><p class="text-muted"><span class="badge bg-primary">50%</span></p></div>').openPopup();
+        L.marker([-23.54040442951417, -46.80657638184421], {icon: amor}).addTo(map).bindPopup('<h1 class="text-center">Sonho de Valsa</h1>'+'<div class="col-md-12 text-center"><img src="https://www.embalagemmarca.com.br/wp-content/uploads/2016/05/SDV-LOVE.jpg" class="img-thumbnail" style="width: 150px;"alt="Avatar" /><h5 class="mb-2"><strong>Sonho de Valsa lata presente R$240,00</strong></h5><p class="text-muted"><span class="badge bg-primary">Dia das Mães</span></p></div>').openPopup();
+        L.marker([-23.575651811421192, -46.80691970411109], {icon: zombie}).addTo(map).bindPopup('<h1 class="text-center">Pesquise um produto</h1>'+'<form action="{% url "search_preco" %}" method="GET">{% csrf_token %}<form><div class="form-group"><div class="form-group"><label for="exampleInputEmail1">Nome do produto </label><input name="q" class="form-control" aria-describedby="emailHelp" placeholder="Produto">'+'<br>'+'</div><div class="col-md-12 text-center"><button type="submit" class="btn btn-primary">Enviar</button></div></div></div></form>').openPopup();
       
+        L.marker([-23.550671018657138, -46.76888242390518], {icon: zombie}).addTo(map).bindPopup('{% for city in object_list %}<li>{{ city.Nome }}, {{ city.preco }}</li>{% endfor %}').openPopup();
         
         let data = JSON.parse(document.getElementById('data').textContent)
         data.forEach(data => {
-          L.marker([data.latitude, data.longitude], {icon: zombie}).addTo(map).bindPopup('<h1 class="text-center">'+data.Nome +'</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">'+data.preco+'</span></p></div>').openPopup();
-        })
+            L.marker([data.latitude, data.longitude], {icon: zombie}).addTo(map).bindPopup('<h1 class="text-center">'+data.Nome +'</h1>'+'<div class="col-md-12 text-center"><span class="badge bg-primary">'+data.preco+'</span></p></div>').openPopup();
+          })
+
+          
+        let qs = JSON.parse(document.getElementById('qs').textContent)
+        qs.forEach(qs => {
+            L.marker([,], {icon: ninja}).addTo(map).bindPopup('<h1 class="text-center">Sam"s Club</h1>').openPopup();
+          })
+
         
         
+        
+      
+        
 
-          // Creates a red marker with the coffee icon
-        var aaMarker = L.ExtraMarkers.icon({
-          icon: 'fa-coffee',
-          markerColor: 'red',
-          shape: 'square',
-          prefix: 'fa'
-        });
-
-        L.marker([-23.53997857366727, -46.79291177772832], {icon: aaMarker}).addTo(map);
+         
 
     </script>
     <div class="container mt-4">  
